@@ -1,4 +1,4 @@
-# CinemaBH — Backend README file
+# CinemaBH-backend README file
 
 **Project start date:** 27.10.2025
 Intern: Edah Ždralović
@@ -17,7 +17,8 @@ This repository contains the **backend** part of the project.
 
   Firstly read Alert above -> you need **backend and frontend part** of project to be able to run it.
 
-    **Requirements: **
+  **Requirements: **
+  
       **Node.js** -> You can check  if you have already installed node.js in your terminal with comand ->"node -v"
           If you are missing node instalation zou can download it and install on link belove 
           Node download: ( https://nodejs.org/en/download )
@@ -29,7 +30,15 @@ This repository contains the **backend** part of the project.
       **Most importantly - this repository is missing file called "application.properites"**
           This file is key file to conect backend to database, it is holding sensitive information like database password, api keys... 
           For project security I can't share this file but you can contact me via email for help.
-         
+
+  How to **start project** (First check Requirements above)
+  
+      **1.** Open terminal and in termianl enter folder CinemaBH-backend
+      **2.** Run command  ./mvnw spring-boot:run  (after this zou can check it everzthing works via http://localhost:8080/api/movies (port 8080 is defined in application.properites)
+      **3.** In second terminal enter folder CinemaBH-fronted
+      **4.** Run npm install 
+      **5.** Run npm start
+      **6.** Visit http://localhost:3000 
       
 ## Technologies
     - Backend: **Spring Boot**
