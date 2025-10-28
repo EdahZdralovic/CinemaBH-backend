@@ -2,15 +2,16 @@ package com.edahzdralovic.cinemabh.model;
 
 import jakarta.persistence.*;
 
-public class MovieRating {
+@Entity
+@Table(name = "movie_genre")
+public class MovieGenre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Double rating;
-    private String ratingSite;
-    private String ratingUrl;
 
-    @ManyToOne
-    @JoinColumn(name = "movie_id")
+    @ManyToOne @JoinColumn(name = "movie_id")
     private Movie movie;
+
+    @ManyToOne @JoinColumn(name = "genre_id")
+    private Genre genre;
 }

@@ -5,16 +5,17 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
-@Table(name = "genre")
-public class Genre {
+@Table(name = "location")
+public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String genreName;
+    private String city;
+    private String country;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
-    @OneToMany(mappedBy = "genre")
-    private List<MovieGenre> movieGenres;
+    @OneToMany(mappedBy = "location")
+    private List<Venue> venues;
 }

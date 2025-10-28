@@ -1,50 +1,42 @@
 package com.edahzdralovic.cinemabh.model;
 
-
+import com.edahzdralovic.cinemabh.model.enums.PgRatingEnum;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.util.ArrayList;
-import java.util.Date;
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
+@Table(name = "movie")
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String title;
-    private String description;
     private String language;
+    private String description;
     private Integer duration;
-    private String image_url;
-    private Date releaseDate;
-    private Date endProjectionDate;
+    private String coverImageUrl;
+    private Date projectionStart;
+    private Date projectionEnd;
 
-    @ManyToOne
-    @JoinColumn(name = "director_id")
-    private Director director;
+    @Enumerated(EnumType.STRING)
+    private PgRatingEnum pgRating;
 
-    @ManyToOne
-    @JoinColumn(name = "genre_id")
-    private Genre genre;
+    private BigDecimal imbdRating;
+    private BigDecimal rottenTometosRating;
+    private Timestamp archivedAt;
+    private Timestamp createdAt;
+    private Timestamp updatedAt;
 
-    @OneToMany(mappedBy = "movie")
-    private List<Projection> projections = new ArrayList<>();
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+    private List<MovieMedia> media;
 
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+    private List<MovieGenre> genres;
 
-
-   // hibernate.hbm2ddl.auto rekao Almir za hibernate
-    @ManyToMany
-    @JoinTable(
-            name = "actor_movie",
-            joinColumns = @JoinColumn(name = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "actor_id")
-    )
-    private List<Actor> actors;
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL)
+    private List<MovieCrew> crew;
 }

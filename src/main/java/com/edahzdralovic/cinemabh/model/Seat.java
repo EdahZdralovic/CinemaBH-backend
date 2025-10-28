@@ -2,19 +2,22 @@ package com.edahzdralovic.cinemabh.model;
 
 import jakarta.persistence.*;
 import java.sql.Timestamp;
-import java.util.List;
 
 @Entity
-@Table(name = "genre")
-public class Genre {
+@Table(name = "seat")
+public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String genreName;
+    private Integer row;
+    private Integer collumn;
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
-    @OneToMany(mappedBy = "genre")
-    private List<MovieGenre> movieGenres;
+    @ManyToOne @JoinColumn(name = "hall_id")
+    private CinemaHall hall;
+
+    @ManyToOne @JoinColumn(name = "type_id")
+    private SeatType seatType;
 }

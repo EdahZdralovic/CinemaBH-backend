@@ -5,23 +5,22 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
-@Table(name = "venue")
-public class Venue {
+@Table(name = "cinema_hall")
+public class CinemaHall {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private String street;
-    private String phone;
-    private String email;
+    private Integer regularSeats;
+    private Integer loveBoxSeats;
+    private Integer vipSeats;
     private Timestamp createdAt;
     private Timestamp updatedAt;
     private Timestamp archivedAt;
 
-    @ManyToOne @JoinColumn(name = "location_id")
-    private Location location;
+    @ManyToOne @JoinColumn(name = "venue_id")
+    private Venue venue;
 
-    @OneToMany(mappedBy = "venue")
-    private List<CinemaHall> halls;
+    @OneToMany(mappedBy = "hall")
+    private List<Seat> seats;
 }
