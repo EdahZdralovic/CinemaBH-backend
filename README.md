@@ -1,72 +1,107 @@
-# CinemaBH-backend README file
+# **CinemaBH-backend README file**
 
-**Project start date:** 27.10.2025
-Intern: Edah Ždralović
-Mentor: Ibrahim Efendić
+**Project start date:** 27.10.2025  
+**Intern:** Edah Ždralović  
+**Mentor:** Ibrahim Efendić  
 
-## About the project
-This is a study project: a web app for cinemas where users can view schedules and reserve or buy tickets. Right now it’s only a skeleton for future development.
+---
 
-## About this repository
-This repository contains the **backend** part of the project.
-**Alert - This is backend part of project - To have full project visit repository EdahZdralovic/CinemaBH-frontend**
-  Link to the frontend part of project: (https://github.com/EdahZdralovic/CinemaBH-frontend/)
-  Advice: Create one folder where you will keep CinemaBH-frontend and CinemaBH-backend folder for easyier start
+## **About the project**
+This is a study project: a web app for cinemas where users can view schedules and reserve or buy tickets.  
+Right now, it’s only a skeleton for future development.
 
-## How to run project
+---
 
-  Firstly read Alert above -> you need **backend and frontend part** of project to be able to run it.
+## **About this repository**
+This repository contains the **backend** part of the project.  
+**⚠️ Alert – This is the backend part of the project. To have the full project, visit the repository [EdahZdralovic/CinemaBH-frontend](https://github.com/EdahZdralovic/CinemaBH-frontend).**
 
-  **Requirements: **
+**Advice:** Create one folder where you will keep both **CinemaBH-frontend** and **CinemaBH-backend** folders for an easier start.
+
+---
+
+## **How to run the project**
+
+Firstly, read the alert above → you need **both the backend and frontend parts** of the project to be able to run it.
+
+### **Requirements**
+- **Node.js**  
+  You can check if you already have Node.js installed by running this command in your terminal:  
+      node -v
   
-      **Node.js** -> You can check  if you have already installed node.js in your terminal with comand ->"node -v"
-          If you are missing node instalation zou can download it and install on link belove 
-          Node download: ( https://nodejs.org/en/download )
-      **Apache Maven** -> You can download Maven on link belove
-          Maven download: ( https://maven.apache.org/download.cgi )
-      **Java Software Development Kit (version 17. or above)** -> You can download it on link belove
-          Javak SDK download: ( https://www.oracle.com/europe/java/technologies/downloads/ )
-      **Nice to have - Intelijj or similar java code editor**
-      **Most importantly - this repository is missing file called "application.properites"**
-          This file is key file to conect backend to database, it is holding sensitive information like database password, api keys... 
-          For project security I can't share this file but you can contact me via email for help.
+  If you don’t have Node.js installed, download and install it from the link below:  
+  [Node.js download](https://nodejs.org/en/download)
 
-  How to **start project** (First check Requirements above)
+- **Apache Maven**  
+  You can download Maven from the link below:  
+  [Maven download](https://maven.apache.org/download.cgi)
+
+- **Java Software Development Kit (version 17 or above)**  
+  You can download it from the link below:  
+  [Java SDK download](https://www.oracle.com/europe/java/technologies/downloads/)
+
+- **Nice to have:** IntelliJ IDEA or a similar Java code editor  
+- **Important:** This repository is missing a file called `application.properties`.  
+  This file is key to connecting the backend to the database. It holds sensitive information such as database passwords, API keys, etc.  
+  For project security, I can’t share this file publicly, but you can contact me via email for help.
+
+---
+
+### **How to start the project**
+
+(First check the requirements above.)
+
+1. Open the terminal and navigate to the folder **CinemaBH-backend**.  
+2. Run the command:  
+
+       ./mvnw spring-boot:run
+   
+   After this, you can check if everything works via http://localhost:8080/api/movies
+   (Port 8080 is defined in  application.properties.)
+4. In a second terminal, navigate to the folder **CinemaBH-frontend**.  
+5. Run:  
+
+       npm install
   
-      **1.** Open terminal and in termianl enter folder CinemaBH-backend
-      **2.** Run command  ./mvnw spring-boot:run  (after this zou can check it everzthing works via http://localhost:8080/api/movies (port 8080 is defined in application.properites)
-      **3.** In second terminal enter folder CinemaBH-fronted
-      **4.** Run npm install 
-      **5.** Run npm start
-      **6.** Visit http://localhost:3000 
-      
-## Technologies
-    - Backend: **Spring Boot**
-    - Frontend: **React.js**
-    - Database: **PostgreSQL**
+7. Then run:  
 
-# Database 
-   **ERD Diagram**
-       My ERD diagram for this project zou can find on link belove where you can also export SQL code
-       **Link to ERD Diagram** ( https://dbdiagram.io/d/68ff6111357668b732c911ab )
+       npm start
+   
+9. Visit http://localhost:3000
 
+---
 
-## Backend architecture
-Main application code is under:
-    "src/main/java/edahzdralovic/cinemabh"
-    Also keep the main "@SpringBootApplication" class in the root package so component scanning finds controllers, services, repositories, and entities.
+## **Technologies**
+- **Backend:** Spring Boot  
+- **Frontend:** React.js  
+- **Database:** PostgreSQL
 
-Layers (folders) and what they do:
+---
 
-  **controller** — REST endpoints, only request/response handling, no business logic. We will implement DTOs in future.
-  **service** — Business logic and orchestration. Calls repositories; returns data to controllers.
-  **model** — JPA entities that map to DB tables (one entity ≙ one table). Do not expose entities directly in controllers.
-  **repository** — Spring Data JPA interfaces. Built-in CRUD/paging and derived queries.
-  **dto** — Request/response classes for the API (separate from entities).
-  **exception/** — Custom exceptions and a global handler for consistent JSON error responses.
-  **util/** — Small, stateless helpers (formatting, parsing). No big logic.
+## **Database**
+**ERD Diagram:**  
+My ERD diagram for this project can be found at the link below, where you can also export the SQL code:  
+[**Link to ERD Diagram**](https://dbdiagram.io/d/68ff6111357668b732c911ab)
 
-## Dependencies (artifactId)
+---
+
+## **Backend architecture**
+Main application code is under:  src/main/java/edahzdralovic/cinemabh
+
+Also, keep the main "@SpringBootApplication" class in the root package so component scanning finds controllers, services, repositories, and entities.
+
+### **Layers (folders) and what they do:**
+- **controller** — REST endpoints, only request/response handling, no business logic. (DTOs will be implemented in the future.)  
+- **service** — Business logic and orchestration. Calls repositories and returns data to controllers.  
+- **model** — JPA entities that map to DB tables (one entity ≙ one table). Do not expose entities directly in controllers.  
+- **repository** — Spring Data JPA interfaces. Built-in CRUD/paging and derived queries.  
+- **dto** — Request/response classes for the API (separate from entities).  
+- **exception/** — Custom exceptions and a global handler for consistent JSON error responses.  
+- **util/** — Small, stateless helpers (formatting, parsing). No big logic.
+
+---
+
+## **Dependencies (artifactId)**
 - spring-boot-starter-data-jpa  
 - spring-boot-starter-web  
 - flyway-core  
@@ -75,12 +110,13 @@ Layers (folders) and what they do:
 - postgresql  
 - spring-boot-starter-test  
 - lombok  
-- springdoc-openapi-starter-webmvc-ui  (Swagger UI / OpenAPI 3) :contentReference[oaicite:2]{index=2}
+- springdoc-openapi-starter-webmvc-ui *(Swagger UI / OpenAPI 3)*
 
-This README.md will be upadated for next 3 months (from 28.10.2025).
+---
 
-Thats all folks! 
+## **Maintenance**
+This README.md will be **updated** for the next 3 months **(from 28.10.2025)**.
 
+---
 
-
-
+That’s all, folks!
